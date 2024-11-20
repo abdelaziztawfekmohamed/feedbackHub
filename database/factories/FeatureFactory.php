@@ -4,12 +4,14 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Feature>
  */
 class FeatureFactory extends Factory
 {
+    use HasFactory;
     /**
      * Define the model's default state.
      *
@@ -18,8 +20,8 @@ class FeatureFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->fake()->text(),
-            'description' => $this->fake()->text(2000),
+            'name' => fake()->text(),
+            'description' => fake()->text(2000),
             'user_id' => User::where('email', 'admin@example.com')->first()->id,
         ];
     }
