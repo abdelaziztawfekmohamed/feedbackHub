@@ -22,7 +22,8 @@ class FeatureFactory extends Factory
         return [
             'name' => fake()->text(),
             'description' => fake()->text(2000),
-            'user_id' => User::where('email', 'admin@example.com')->first()->id,
+            'user_id' => User::where('email', 'admin@example.com')->first()?->id,
+            // SELECT * FROM users WHERE email = 'admin@example.com' LIMIT 1;
         ];
     }
 }
